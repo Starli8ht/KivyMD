@@ -1,0 +1,85 @@
+<KitchenSinkPickers>
+    name: "pickers"
+    military: 0
+
+    Toolbar:
+        id: toolbar
+        pos_hint: {"top": 1}
+
+    MDBoxLayout:
+        spacing: "12dp"
+        orientation: "vertical"
+        adaptive_size: True
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_size: True
+            spacing: "12dp"
+
+            MDRaisedButton:
+                text: "Open time picker"
+                -width: box_time.width
+                on_release: root.show_example_time_picker(root.military)
+
+            MDLabel:
+                id: time_picker_label
+                adaptive_height: True
+                halign: "center"
+                text: "00:00"
+
+            MDBoxLayout:
+                id: box_time
+                adaptive_size: True
+
+                MDLabel:
+                    text: "Start on previous time"
+                    adaptive_size: True
+                    pos_hint: {"center_y": .5}
+
+                MDCheckbox:
+                    id: time_picker_use_previous_time
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+
+            MDBoxLayout:
+                adaptive_size: True
+
+                MDLabel:
+                    text: "Use military mode"
+                    adaptive_size: True
+                    pos_hint: {"center_y": .5}
+
+                MDCheckbox:
+                    size_hint: None, None
+                    size: "48dp", "48dp"
+                    on_active: root.military = 1 if self.active else 0
+
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_size: True
+            spacing: "12dp"
+
+            MDRaisedButton:
+                text: "Open date picker"
+                -width: box_time.width
+                on_release: root.show_example_date_picker()
+
+            MDLabel:
+                id: date_picker_label
+                adaptive_height: True
+                halign: "center"
+                text: "01.01.20"
+
+            MDBoxLayout:
+                adaptive_size: True
+
+                MDLabel:
+                    text: "Start on previous date"
+                    adaptive_size: True
+                    pos_hint: {"center_y": .5}
+
+                MDCheckbox:
+                    id: date_picker_use_previous_date
+                    size_hint: None, None
+                    size: "48dp", "48dp"
